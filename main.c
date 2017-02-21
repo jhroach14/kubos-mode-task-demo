@@ -6,16 +6,18 @@ int modeBreak = 0;
 
 class mode{
 	
-	virtual void start();
-	virtual void stop();
-	virtual void run();
+	public:
+		string currentTask;
+	
+		virtual void start();
+		virtual void stop();
+		virtual void run();
 
 };
 
 class countMode: public mode {
 	
 	int count = 0;
-	string currentTask;
 
 	void start()(
 		
@@ -23,6 +25,138 @@ class countMode: public mode {
 		
 		cout<<"What number would you like to start at?\n";
 		cin>>count;
+
+		cout<<"What task would you like to do(up, down, tell)? Type exit to exit\n";
+		cin>>task;
+
+	)
+
+	void run(){
+
+		if(!currentTask.compare("up")){
+
+			countUp();	
+	
+		}else
+		if(!currentTask.compare("down")){
+		
+			countDown();
+
+		}else
+		if(!currentTask.compare("tell")){
+
+			tellCount();
+	
+		}else
+		if(!currentTask.compare("exit"){
+			modeBreak = 1;
+		}
+
+	}
+
+	void stop(){
+	
+		cout<<"exiting counting mode. Values reset\n";
+		count = 0;
+	
+	}
+
+	void countUp(){
+	
+		count++;
+	
+	}
+
+	void countDown(){
+	
+		count--;
+	
+	}
+
+	void tellCount(){
+	
+		cout<<count<<'\n';
+	
+	}
+	
+}
+
+class multiplyMode: public mode {
+	
+	int mult = 0;
+	
+	void start()(
+		
+		cout<<"Starting multiply mode\n";		
+		
+		cout<<"What number would you like to start at?\n";
+		cin>>mult;
+
+		cout<<"What task would you like to do(by2, by3, tell)? Type exit to exit\n";
+		cin>>task;
+
+	)
+
+	void run(){
+
+		if(!currentTask.compare("by2")){
+
+			multBy2();	
+	
+		}else
+		if(!currentTask.compare("by3")){
+		
+			multBy3();
+
+		}else
+		if(!currentTask.compare("tell")){
+
+			tellmult();
+	
+		}else
+		if(!currentTask.compare("exit"){
+			modeBreak = 1;
+		}
+
+	}
+
+	void stop(){
+	
+		cout<<"exiting multiply mode. Values reset\n";
+		count = 0;
+	
+	}
+
+	void multBy2(){
+	
+		mult = mult*2;
+	
+	}
+
+	void multBy3(){
+	
+		mult = mult*3;
+	
+	}
+
+	void tellMult(){
+	
+		cout<<mult<<'\n';
+	
+	}
+	
+}
+
+class waitMode: public mode {
+	
+	int wait = 0;
+
+	void start()(
+		
+		cout<<"Starting wait mode\n";		
+		
+		cout<<"How long do you want to wait?\n";
+		cin>>wait;
 
 		cout<<"What task would you like to do(up, down, tell)? Type exit to exit\n";
 		cin>>task;
